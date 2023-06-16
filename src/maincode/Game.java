@@ -11,7 +11,7 @@ public class Game {
 	ChoiceHandler cHandler = new ChoiceHandler();
 	Story story = new Story(this, ui, Tr);
 	
-	String nextPosition1, nextPosition2, nextPosition3, nextPosition4;
+	String nextPosition1, nextPosition2, nextPosition3, nextPosition4, nextPosition5	;
 	public static void main(String[] args) {
 		
 		new Game();
@@ -23,6 +23,8 @@ public class Game {
 		story.defaultSetup();
 		Tr.ShowTitleScreen();
 	}
+	
+	
 	public 	class ChoiceHandler implements ActionListener{
 
 		public void actionPerformed(ActionEvent event) {
@@ -35,6 +37,8 @@ public class Game {
 			case "Command2": story.selectPosition(nextPosition2);break; 
 			case "Command3": story.selectPosition(nextPosition3);break;
 			case "Command4": story.selectPosition(nextPosition4);break;
+			case "Command5": story.selectPosition(nextPosition5);break;
+			
 			
 			}
 		}

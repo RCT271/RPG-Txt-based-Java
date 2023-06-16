@@ -9,7 +9,7 @@ public class UI {
 	JFrame window;
 	JPanel TitlenamePanel, StartButtonPanel, mainTextPanel, ButtonPanel, UserPanel;
 	JLabel TitlenameLabel, hpLabel, hpLabelNumber, WeaponLabel, WeaponLabelName, goldLabelNumber, goldLabel;
-	JButton StartButton, BChoice1, BChoice2, BChoice3, BChoice4;
+	JButton StartButton, BChoice1, BChoice2, BChoice3, BChoice4, BChoice5;
 	JTextArea mainTextArea;
 	
 	Font TitleFont = new Font("Times New Roman", Font.PLAIN, 50);
@@ -69,7 +69,7 @@ public class UI {
 		ButtonPanel = new JPanel();
 		ButtonPanel.setBounds(250, 350, 300, 150);
 		ButtonPanel.setBackground(Color.black);
-		ButtonPanel.setLayout(new GridLayout(4,1));
+		ButtonPanel.setLayout(new GridLayout(5,1));
 		window.add(ButtonPanel);
 		
 		BChoice1 = new JButton("==========");
@@ -108,6 +108,15 @@ public class UI {
 		BChoice4.addActionListener(cHandler);
 		BChoice4.setActionCommand("Command4");
 		ButtonPanel.add(BChoice4);
+		
+		BChoice5 = new JButton("==========");
+		BChoice5.setBackground(Color.black);
+		BChoice5.setForeground(Color.white);
+		BChoice5.setFont(normalFont);
+		BChoice5.setFocusPainted(false);
+		BChoice5.addActionListener(cHandler);
+		BChoice5.setActionCommand("Command5");
+		ButtonPanel.add(BChoice5);
 		
 		UserPanel = new JPanel();
 		UserPanel.setLayout(new GridLayout(2,5));
