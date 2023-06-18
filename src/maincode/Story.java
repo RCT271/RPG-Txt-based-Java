@@ -151,12 +151,13 @@ public class Story {
 		ui.BChoice1.setText("Go Back to The Forest Entrance");
 		ui.BChoice2.setText("Camp a bit");
 		ui.BChoice3.setText("Wait for Monsters");
-		ui.BChoice4.setText("Save");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Save");
 		
 		game.nextPosition1 = "Forest";
 		game.nextPosition2 = "Camp";
 		game.nextPosition3 = "MonsterEncounter";
-		game.nextPosition4 = "Save";
+		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
 	}
 	public void Camp() {

@@ -1,9 +1,6 @@
 package maincode;
 
 import java.awt.event.*;
-
-
-
 public class Game {
 	
 	UI ui = new UI();
@@ -11,7 +8,7 @@ public class Game {
 	ChoiceHandler cHandler = new ChoiceHandler();
 	Story story = new Story(this, ui, Tr);
 	
-	String nextPosition1, nextPosition2, nextPosition3, nextPosition4, nextPosition5	;
+	String nextPosition1, nextPosition2, nextPosition3, nextPosition4, nextPosition5;
 	public static void main(String[] args) {
 		
 		new Game();

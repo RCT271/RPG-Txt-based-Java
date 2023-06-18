@@ -24,5 +24,5 @@ public class Transition {
 		ui.mainTextArea.setVisible(true);
 		ui.ButtonPanel.setVisible(true);
 		ui.UserPanel.setVisible(true);
+		}
 	}
-}

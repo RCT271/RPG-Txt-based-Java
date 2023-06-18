@@ -17,8 +17,8 @@ public class UI {
 	Font TextFont = new Font("Times New Roman", Font.PLAIN, 20);
 	
 	public void createUI(ChoiceHandler cHandler) {
-		//Window
 		
+		//Window
 		window = new JFrame("Fortuna");
 		window.setSize(800, 600);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class UI {
 		TitlenamePanel = new JPanel();
 		TitlenamePanel.setBounds(100, 100, 600, 150);
 		TitlenamePanel.setBackground(Color.black);
-		TitlenameLabel = new JLabel("Fortuna");
+		TitlenameLabel = new JLabel("FORTUNA");
 		TitlenameLabel.setForeground(Color.white);
 		TitlenameLabel.setFont(TitleFont);
 		TitlenamePanel.add(TitlenameLabel);
@@ -38,7 +38,7 @@ public class UI {
 		StartButtonPanel = new JPanel();
 		StartButtonPanel.setBounds(300, 400, 200, 100);
 		StartButtonPanel.setBackground(Color.black);
-		StartButton = new JButton("START ADVENTURE");
+		StartButton = new JButton("ENTER FORTUNA");
 		StartButton.setBackground(Color.black);
 		StartButton.setForeground(Color.white);
 		StartButton.setFont(normalFont);
@@ -48,9 +48,10 @@ public class UI {
 		StartButtonPanel.add(StartButton);
 		
 		window.add(TitlenamePanel);
-		window.add(StartButtonPanel);
 		TitlenamePanel.setVisible(false);
+		window.add(StartButtonPanel);
 		StartButtonPanel.setVisible(false);
+		
 		
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(100, 100, 600, 250);
@@ -80,7 +81,6 @@ public class UI {
 		BChoice1.addActionListener(cHandler);
 		BChoice1.setActionCommand("Command1");
 		ButtonPanel.add(BChoice1);
-		
 		
 		BChoice2 = new JButton("==========");
 		BChoice2.setBackground(Color.black);
@@ -155,6 +155,9 @@ public class UI {
 		WeaponLabelName.setForeground(Color.white);
 		UserPanel.add(WeaponLabelName);
 		
+		
 		window.setVisible(true);
+		
+		
 	}
 }
