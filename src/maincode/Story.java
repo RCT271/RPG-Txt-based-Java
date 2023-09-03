@@ -103,6 +103,7 @@ public class Story {
 		
 	}
 	public void Forest() {
+		
 		ui.mainTextArea.setText("You Went to the Forest");
 		ui.BChoice1.setText("Go Back to Town");
 		ui.BChoice2.setText("Go Left");
@@ -165,7 +166,7 @@ public class Story {
 		if (player.PlayerHP > 100) player.PlayerHP = 100;
 		ui.mainTextArea.setText("You Set Up Camp, and you feel refreshed");
 		ui.BChoice1.setText("Go Back to the Forest Entrance");
-		ui.BChoice2.setText("Save");
+		ui.BChoice2.setText("");
 		ui.BChoice3.setText("");
 		ui.BChoice4.setText("");
 		ui.BChoice5.setText("Save");
@@ -295,6 +296,9 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		game.nextPosition5 = "Save";
 	}
 	public void Tavern() {
+		Game.bgMusic = new Sound("src/Assets/Tavern BG.wav");
+		Game.bgMusic.loop();
+		
 		ui.mainTextArea.setText("You are now in the Tavern");
 		ui.BChoice1.setText("Go Back to Town");
 		ui.BChoice2.setText("Go Talk to the Barkeep");

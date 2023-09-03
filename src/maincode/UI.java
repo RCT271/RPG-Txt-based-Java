@@ -1,10 +1,9 @@
 package maincode;
 
 import java.awt.*;
+
 import javax.swing.*;
-
 import maincode.Game.ChoiceHandler;
-
 public class UI {
 	JFrame window;
 	JPanel TitlenamePanel, StartButtonPanel, mainTextPanel, ButtonPanel, UserPanel;
@@ -16,8 +15,11 @@ public class UI {
 	Font normalFont = new Font("Times New Roman", Font.PLAIN, 15);
 	Font TextFont = new Font("Times New Roman", Font.PLAIN, 20);
 	
+	
 	public void createUI(ChoiceHandler cHandler) {
 		
+		//Opening Theme and other music
+
 		//Window
 		window = new JFrame("Fortuna");
 		window.setSize(800, 600);
@@ -158,6 +160,6 @@ public class UI {
 		
 		window.setVisible(true);
 		
-		
+
 	}
-}
+}	
