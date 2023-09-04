@@ -461,6 +461,7 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		game.nextPosition5 = "Save";
 	}
 	public void Cave() {
+		
 		ui.mainTextArea.setText("You stumble across a Cave with an Ominous Aura around it, proceed?");
 		ui.BChoice1.setText("Proceed Inside");
 		ui.BChoice2.setText("Go Back");
@@ -475,6 +476,9 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		game.nextPosition5 = "Save";	
 	}
 	public void Caverns() {
+		Game.bgMusic.stop();
+		Game.bgMusic = new Sound("src/Assets/Cavern.wav");
+		Game.bgMusic.loop();
 		ui.mainTextArea.setText("You proceeded into the Caverns");
 		ui.BChoice1.setText("Camp");
 		ui.BChoice2.setText("Wait for Monsters");
