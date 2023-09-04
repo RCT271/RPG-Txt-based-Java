@@ -15,7 +15,6 @@ public class UI {
 	Font normalFont = new Font("Times New Roman", Font.PLAIN, 15);
 	Font TextFont = new Font("Times New Roman", Font.PLAIN, 20);
 	
-	
 	public void createUI(ChoiceHandler cHandler) {
 		
 		//Opening Theme and other music

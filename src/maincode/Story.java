@@ -37,27 +37,39 @@ public class Story {
 		defaultSetup();
 		switch(nextPosition) {
 		case "Questboard": Questboard(); break;
+		case "Tavern": Tavern(); break;
+		case "Shop": Shop(); break;
+		case "Town": Town(); break;
 		case "Forest": Forest(); break;
 		case "ForestLeft": ForestLeft(); break;
 		case "ForestRight": ForestRight(); break;
 		case "ForestForward": ForestForward(); break;
-		case "MonsterEncounter": MonsterEncounter(); break;
-		case "Tavern": Tavern(); break;
-		case "Shop": Shop(); break;
-		case "Town": Town(); break;
-		case "Fight": Fight(); break;
-		case "PlayerAttack": PlayerAttack(); break;
-		case "MonsterAttack": MonsterAttack(); break;
-		case "Win": Win(); break;
-		case "Lost": Win(); break;
+		case "MonsterEncounterForest": MonsterEncounterForest(); break;
+		case "PlayerAttackForest": PlayerAttackForest(); break;
+		case "MonsterAttackForest": MonsterAttackForest(); break;
+		case "FightForest": FightForest(); break;
+		case "FightCavern": FightCavern(); break;
+		case "PlayerAttackCavern": PlayerAttackForest(); break;
+		case "MonsterAttackCavern": MonsterAttackCavern(); break;
+		case "WinForest": WinForest(); break;
+		case "Lost": Lost(); break;
 		case "Camp": Camp(); break;
 		case "Barkeep": Barkeep(); break;
 		case "Meal": Meal(); break;
 		case "Beer": Beer(); break;
-		case "Save": Save(); break;		
+		case "Save": Save(); break;
+		case "Cave": Cave(); break;
+		case "Caverns": Caverns(); break;
+		case "MonsterEncounterCaverns": MonsterEncounterCaverns(); break;
+		case "CampCavern": CampCavern(); break;
+		case "WinCaverns": WinCaverns(); break;
+		
 		}
 	}
 	public void Town() {
+		Game.bgMusic.stop();
+		Game.bgMusic = new Sound("src/Assets/Fortuna Town Theme.wav");
+		Game.bgMusic.loop();
 		ui.mainTextArea.setText("You are In Town, What would you like to do?");
 		ui.BChoice1.setText("Go To the Questboard");
 		ui.BChoice2.setText("Go To the Forest");
@@ -84,7 +96,6 @@ public class Story {
 		DataStorage data = (DataStorage) SaveLoad.loadObject("src/Assets/saveload.sav");
 		player.PlayerHP = data.PlayerHP;
 		player.Money = data.PlayerMoney;
-//		player.PlayerWeapon = data.play
 	}
 	
 	public void Questboard() {
@@ -103,7 +114,10 @@ public class Story {
 		
 	}
 	public void Forest() {
-		
+		Game.bgMusic.stop();
+		Game.bgMusic = new Sound("src/Assets/Fortuna Forest Music.wav");
+		Game.bgMusic.adjustVolume(-20);
+		Game.bgMusic.loop();
 		ui.mainTextArea.setText("You Went to the Forest");
 		ui.BChoice1.setText("Go Back to Town");
 		ui.BChoice2.setText("Go Left");
@@ -128,7 +142,7 @@ public class Story {
 		
 		game.nextPosition1 = "Forest";
 		game.nextPosition2 = "Camp";
-		game.nextPosition3 = "MonsterEncounter";
+		game.nextPosition3 = "MonsterEncounterForest";
 		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
 		
@@ -143,7 +157,7 @@ public class Story {
 		
 		game.nextPosition1 = "Forest";
 		game.nextPosition2 = "Camp";
-		game.nextPosition3 = "MonsterEncounter";
+		game.nextPosition3 = "MonsterEncounterForest";
 		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
 	}
@@ -152,17 +166,17 @@ public class Story {
 		ui.BChoice1.setText("Go Back to The Forest Entrance");
 		ui.BChoice2.setText("Camp a bit");
 		ui.BChoice3.setText("Wait for Monsters");
-		ui.BChoice4.setText("");
+		ui.BChoice4.setText("Cave");
 		ui.BChoice5.setText("Save");
 		
 		game.nextPosition1 = "Forest";
 		game.nextPosition2 = "Camp";
-		game.nextPosition3 = "MonsterEncounter";
-		game.nextPosition4 = "";
+		game.nextPosition3 = "MonsterEncounterForest";
+		game.nextPosition4 = "Cave";
 		game.nextPosition5 = "Save";
 	}
 	public void Camp() {
-		player.PlayerHP += 5;
+		player.PlayerHP += 10;
 		if (player.PlayerHP > 100) player.PlayerHP = 100;
 		ui.mainTextArea.setText("You Set Up Camp, and you feel refreshed");
 		ui.BChoice1.setText("Go Back to the Forest Entrance");
@@ -177,8 +191,11 @@ public class Story {
 		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
 	}
-	public void MonsterEncounter() {
-		
+	public void MonsterEncounterForest() {
+		Game.bgMusic.stop();
+		Game.bgMusic = new Sound("src/Assets/Fortuna Enemy Encounter.wav");
+		Game.bgMusic.loop();
+		Game.bgMusic.adjustVolume(-20);
 		int i = new java.util.Random().nextInt(3)+1;
 		if(i==1) {
 			monster = new Monster_Goblin();
@@ -201,7 +218,7 @@ public class Story {
 		game.nextPosition3 = "";
 		game.nextPosition4 = "";
 	}
-	public void Fight() {
+	public void FightForest() {
 ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?");
 		
 		ui.BChoice1.setText("Attack");
@@ -209,12 +226,26 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		ui.BChoice3.setText("");
 		ui.BChoice4.setText("");
 		
-		game.nextPosition1 = "PlayerAttack";
+		game.nextPosition1 = "PlayerAttackForest";
 		game.nextPosition2 = "Town";
 		game.nextPosition3 = "";
 		game.nextPosition4 = "";
 	}
-	public void PlayerAttack() {
+	public void FightCavern() {
+		ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?");
+				
+				ui.BChoice1.setText("Attack");
+				ui.BChoice2.setText("Retreat");
+				ui.BChoice3.setText("");
+				ui.BChoice4.setText("");
+				
+				game.nextPosition1 = "PlayerAttackCavern";
+				game.nextPosition2 = "Town";
+				game.nextPosition3 = "";
+				game.nextPosition4 = "";
+			}
+	public void PlayerAttackCavern() {
+		new Sound("src/Assets/Attack SFX.wav").play();
 		int playerDMG = new java.util.Random().nextInt(player.CurrentWeapon.Weapon_dmg);
 		
 		ui.mainTextArea.setText("You attacked the " + monster.name + " For " + playerDMG + " DMG");
@@ -226,20 +257,20 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		ui.BChoice4.setText("");
 		
 		if(monster.hp>0) {
-			game.nextPosition1 = "MonsterAttack";
+			game.nextPosition1 = "MonsterAttackCavern";
 			game.nextPosition2 = "";
 			game.nextPosition3 = "";
 			game.nextPosition4 = "";
 		}
 		else if(monster.hp<1) {
-			game.nextPosition1 = "Win";
+			game.nextPosition1 = "WinCaverns";
 			game.nextPosition2 = "";
 			game.nextPosition3 = "";
 			game.nextPosition4 = "";
 		}
 	}
-	
-	public void MonsterAttack() {
+	public void MonsterAttackCavern() {
+		new Sound("src/Assets/Attack SFX.wav").play();
 		int monsterDamage = new java.util.Random().nextInt(monster.dmg);
 		ui.mainTextArea.setText(monster.AttackMSG + "\nYou Recieved " + monsterDamage + " DMG");
 		player.PlayerHP = player.PlayerHP - monsterDamage;
@@ -251,7 +282,7 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		ui.BChoice4.setText("");
 		
 		if(player.PlayerHP>0) {
-			game.nextPosition1 = "Fight";
+			game.nextPosition1 = "FightCaverns";
 			game.nextPosition2 = "";
 			game.nextPosition3 = "";
 			game.nextPosition4 = "";
@@ -264,7 +295,62 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		}
 		
 	}
-	public void Win() {
+	public void PlayerAttackForest() {
+		new Sound("src/Assets/Attack SFX.wav").play();
+		int playerDMG = new java.util.Random().nextInt(player.CurrentWeapon.Weapon_dmg);
+		
+		ui.mainTextArea.setText("You attacked the " + monster.name + " For " + playerDMG + " DMG");
+		monster.hp = monster.hp - playerDMG;
+		
+		ui.BChoice1.setText("Attack");
+		ui.BChoice2.setText("");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		
+		if(monster.hp>0) {
+			game.nextPosition1 = "MonsterAttackForest";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
+		else if(monster.hp<1) {
+			game.nextPosition1 = "WinForest";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
+	}
+	
+	public void MonsterAttackForest() {
+		new Sound("src/Assets/Attack SFX.wav").play();
+		int monsterDamage = new java.util.Random().nextInt(monster.dmg);
+		ui.mainTextArea.setText(monster.AttackMSG + "\nYou Recieved " + monsterDamage + " DMG");
+		player.PlayerHP = player.PlayerHP - monsterDamage;
+		ui.hpLabelNumber.setText("" + player.PlayerHP);
+		
+		ui.BChoice1.setText("Attack");
+		ui.BChoice2.setText("");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		
+		if(player.PlayerHP>0) {
+			game.nextPosition1 = "FightForest";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
+		else if(player.PlayerHP<1) {
+			game.nextPosition1 = "Lost";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
+		
+	}
+	public void WinForest() {
+		Game.bgMusic.stop();
+		Game.bgMusic = new Sound("src/Assets/Fortuna Victory.wav");
+		Game.bgMusic.loop();
 		ui.mainTextArea.setText("You are Victorious, You Defeated the " + monster.name + " You also gained some money");
 		
 		player.Money += 50;
@@ -274,13 +360,14 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		ui.BChoice4.setText("");
 		ui.BChoice5.setText("Save");
 		
-		game.nextPosition1 = "MonsterEncounter";
+		game.nextPosition1 = "MonsterEncounterForest";
 		game.nextPosition2 = "Town";
 		game.nextPosition3 = "Camp";
 		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
 	}
 	public void Lost() {
+		Game.bgMusic.stop();
 		player.PlayerHP += 100;
 		ui.mainTextArea.setText("You Lost, but you were rescued back to Town");
 		ui.BChoice1.setText("Go to the Town Center");
@@ -296,6 +383,7 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		game.nextPosition5 = "Save";
 	}
 	public void Tavern() {
+		Game.bgMusic.stop();
 		Game.bgMusic = new Sound("src/Assets/Tavern BG.wav");
 		Game.bgMusic.loop();
 		
@@ -369,6 +457,96 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		game.nextPosition1 = "Town";
 		game.nextPosition2 = "";
 		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Save";
+	}
+	public void Cave() {
+		ui.mainTextArea.setText("You stumble across a Cave with an Ominous Aura around it, proceed?");
+		ui.BChoice1.setText("Proceed Inside");
+		ui.BChoice2.setText("Go Back");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Save");
+		
+		game.nextPosition1 = "Caverns";
+		game.nextPosition2 = "ForestForward";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Save";	
+	}
+	public void Caverns() {
+		ui.mainTextArea.setText("You proceeded into the Caverns");
+		ui.BChoice1.setText("Camp");
+		ui.BChoice2.setText("Wait for Monsters");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Save");
+		
+		game.nextPosition1 = "CampCavern";
+		game.nextPosition2 = "MonsterEncounterCaverns";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Save";	
+	}
+	public void MonsterEncounterCaverns() {
+		Game.bgMusic.stop();
+		Game.bgMusic = new Sound("src/Assets/Fortuna Enemy Encounter.wav");
+		Game.bgMusic.loop();
+		Game.bgMusic.adjustVolume(-20);
+		int i = new java.util.Random().nextInt(3)+1;
+		if(i==1) {
+			monster = new MonsterCavern_Bear();
+		}
+		else if(i==2) {
+			monster = new MonsterCavern_Spider();
+		}
+		else if (i==3) {
+			monster = new MonsterCavern_Orc();
+		}
+		ui.mainTextArea.setText("You Encountered a Wild " + monster.name + " while exploring the Caverns");
+		
+		ui.BChoice1.setText("Fight");
+		ui.BChoice2.setText("Flee");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		
+		game.nextPosition1 = "FightCavern";
+		game.nextPosition2 = "Cave";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+	}
+	public void CampCavern() {
+		player.PlayerHP += 10;
+		if (player.PlayerHP > 100) player.PlayerHP = 100;
+		ui.mainTextArea.setText("You Set Up Camp, and you feel refreshed");
+		ui.BChoice1.setText("Go back to the Caverns");
+		ui.BChoice2.setText("");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Save");
+		
+		game.nextPosition1 = "Caverns";
+		game.nextPosition2 = "";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Save";
+	}
+	public void WinCaverns() {
+		Game.bgMusic.stop();
+		Game.bgMusic = new Sound("src/Assets/Fortuna Victory.wav");
+		Game.bgMusic.loop();
+		ui.mainTextArea.setText("You are Victorious, You Defeated the " + monster.name + " You also gained some money");
+		
+		player.Money += 50;
+		ui.BChoice1.setText("Stay and Fight More");
+		ui.BChoice2.setText("Go back to the Forest");
+		ui.BChoice3.setText("Camp for a while");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Save");
+		
+		game.nextPosition1 = "MonsterEncounterCavern";
+		game.nextPosition2 = "Forest";
+		game.nextPosition3 = "CampCavern";
 		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
 	}

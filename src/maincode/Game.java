@@ -1,13 +1,6 @@
 package maincode;
 
 import java.awt.event.*;
-import java.io.File;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-
 import Assets.Sound;
 
 
@@ -31,12 +24,10 @@ public class Game {
 		ui.createUI(cHandler);
 		story.defaultSetup();
 		Tr.ShowTitleScreen();
-		ClickSound = ".//src/Assets/Click Fortuna.wav";
 		
 		bgMusic = new Sound("src/Assets/RPG Theme Fortuna.wav");
 		bgMusic.adjustVolume(-10f);
-		bgMusic.loop();
-		
+		bgMusic.loop();	
 		clickSFX = new Sound("src/Assets/Click Fortuna.wav");
 		clickSFX.adjustVolume(-10f);
 		
@@ -48,8 +39,6 @@ public class Game {
 	public 	class ChoiceHandler implements ActionListener{
 
 		public void actionPerformed(ActionEvent event) {
-//				se.setFile(ClickSound);
-//				se.play();
 
 			clickSFX.play();
 			
