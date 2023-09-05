@@ -48,8 +48,6 @@ public class Game {
 	public 	class ChoiceHandler implements ActionListener{
 
 		public void actionPerformed(ActionEvent event) {
-//				se.setFile(ClickSound);
-//				se.play();
 
 			clickSFX.play();
 			

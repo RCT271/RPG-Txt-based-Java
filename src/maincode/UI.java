@@ -26,6 +26,7 @@ public class UI {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setBackground(Color.black);
 		window.setLayout(null);
+		window.setLocationRelativeTo(null);
 
 		
 		//Title
