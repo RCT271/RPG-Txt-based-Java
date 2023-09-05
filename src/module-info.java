@@ -2,9 +2,9 @@
  * 
  */
 /**
- * @author Ryan Tamayo
+ * @author Xyrus
  *
  */
-module Fortuna {
+module Fortunar {
 	requires java.desktop;
 }

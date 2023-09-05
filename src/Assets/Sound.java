@@ -32,6 +32,11 @@ public class Sound {
 		}
 	}
 	
+	public Sound(String path, float adjustedVolume) {
+		this(path);
+		adjustVolume(adjustedVolume);
+	}
+	
 	public void play() {
 		seek(0);
 		clip.start();
@@ -54,4 +59,5 @@ public class Sound {
 	public void adjustVolume(float value) {
        floatControl.setValue(value);
    }
-	}
+	
+}
