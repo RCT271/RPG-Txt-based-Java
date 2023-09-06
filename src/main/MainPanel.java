@@ -5,7 +5,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.basic.BasicBorders;
+import javax.swing.plaf.basic.BasicBorders.ButtonBorder;
 
+import Assets.Sound;
 import main.GUI.*;
 
 @SuppressWarnings("serial")
@@ -17,8 +21,6 @@ public class MainPanel extends JPanel{
 	public JLabel mainText;
 	private FLabel pHpLabel, pGoldLabel, pWeaponLabel;
 	private FLabel npcHpLabel, npcGoldLabel, npcWeaponLabel;
-	
-	public int selectorPos = -1;
 	
 	public MainPanel() {
 		setVisible(false);
@@ -98,78 +100,10 @@ public class MainPanel extends JPanel{
 		this.add(statsPanel, BorderLayout.NORTH);
 		this.add(textPanel, BorderLayout.CENTER);
 		this.add(buttonPanel, BorderLayout.SOUTH);
-		
-		// add keyboard listener
-		Game.window.addKeyListener(new KL());
 	}
 	
 	public void updateSize() {
 		this.setBounds(0, 0, Game.window.getWidth(), Game.window.getHeight());
 	}
 	
-	
-	class KL implements KeyListener {
-
-		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			// if the main panel is not yet visible
-			if (!isVisible()) return;
-			
-			boolean changed = false;
-			
-			switch (e.getKeyCode()) {
-				case KeyEvent.VK_UP:
-					selectorPos -= 1;
-					if (selectorPos < 0) {
-						selectorPos = 4;
-					}
-					// prevent selecting the disabled buttons
-					while (!buttons[selectorPos].isEnabled()) {
-						selectorPos -= 1;
-						if (selectorPos < 0) {
-							selectorPos = 4;
-						}
-					}
-					changed = true;
-					break;
-					
-					
-				case KeyEvent.VK_DOWN:
-					selectorPos += 1;
-					if (selectorPos >= 5) {
-						selectorPos = 0;
-					}
-					// prevent selecting the disabled buttons
-					while (!buttons[selectorPos].isEnabled()) {
-						selectorPos += 1;
-						if (selectorPos >= 5) {
-							selectorPos = 0;
-						}
-					}
-					changed = true;
-					break;
-			}
-			
-			if (!changed) return;
-			
-			for (JButton b : buttons) {
-				b.setBorder(buttons[selectorPos].getBorder());
-			}			
-			
-			buttons[selectorPos].setBorder(BorderFactory.createLineBorder(Color.white, 3));
-		}
-
-		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
 }

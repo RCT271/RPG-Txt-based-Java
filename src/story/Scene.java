@@ -1,5 +1,7 @@
 package story;
 
+import main.Game.Callback;
+
 public class Scene {
 	
 //	public String
@@ -19,11 +21,12 @@ public class Scene {
 //		mainText = ""
 //	;
 	
-	public String mainText = "";
+	public final String[] defaultTexts = {"Go north", "Go south", "Go left", "Go right", "Go back"};
 	
+	public String mainText = "";
 	public String[] commands = {"up", "down", "left", "right", ""};
-	private String[] ogTexts = {"Go north", "Go south", "Go left", "Go right", "Go back"};
-	public String[] texts = ogTexts.clone();
+	public String[] texts = defaultTexts.clone();
+	public Callback[] callbacks = new Callback[5];
 	
 	private String name;
 	
@@ -32,15 +35,39 @@ public class Scene {
 	}
 	
 	
+	
+	// getters
 	public String getName() {
 		return name;
 	}
 	
-	public void resetText(int i) {
-		texts[i] = ogTexts[i];
+	public Callback getCallback(String name) {
+		name = name.replace("callback ", "");
+		int i = Integer.parseInt(name);
+		
+		return callbacks[i];
 	}
 	
-	public void clearSceneTexts() {
+	
+	
+	// setters
+	public void resetText(int i) {
+		texts[i] = defaultTexts[i];
+	}
+	
+	public void resetTexts() {
+		for (int i = 0; i < texts.length; i++) {
+			resetText(i);
+		}
+	}
+	
+	public void clearCommands() {
+		for (int i = 0; i < commands.length; i++) {
+			commands[i] = "";
+		}
+	}
+	
+	public void clearTexts() {
 		for (int i = 0; i < texts.length; i++) {
 			texts[i] = "";
 		}
@@ -54,4 +81,8 @@ public class Scene {
 		texts[i] = newText;
 	}
 	
+	public void setCallback(int i, Callback callback) {
+		if (commands[i].equals("")) commands[i] = "callback";
+		callbacks[i] = callback;
+	}
 }

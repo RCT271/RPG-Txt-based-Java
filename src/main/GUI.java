@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import Assets.*;
 //import main.FortunaButton.ML;
@@ -39,6 +40,8 @@ public abstract class GUI {
 	@SuppressWarnings("serial")
 	public static class FortunaButton extends JButton{
 
+		public static Border defaultBorder;
+		
 		public FortunaButton(String text, String actionCommand) {
 			this.setText(text);
 			this.setBackground(Color.black);
@@ -48,6 +51,8 @@ public abstract class GUI {
 			this.addActionListener(Game.choiceHandler);
 			this.addMouseListener(new ML());
 			this.setActionCommand(actionCommand);
+			
+			defaultBorder = this.getBorder();
 		}
 		
 		
@@ -75,13 +80,15 @@ public abstract class GUI {
 			public void mouseEntered(MouseEvent e) {
 				if (!isEnabled()) return;
 				
-				new Sound("src/Assets/Hover Fortuna.wav").play();
+				new Sound("src/Assets/Hover Fortuna.wav", 6f).play();
+				setBorder(defaultBorder);
 				Game.window.setCursor(Cursor.HAND_CURSOR);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
+				setBorder(defaultBorder);
 				Game.window.setCursor(Cursor.DEFAULT_CURSOR);
 			}
 			

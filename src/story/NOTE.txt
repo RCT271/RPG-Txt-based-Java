@@ -1,0 +1,39 @@
+Here are the commands that you can attach to your scene's commands (or the choices that the user can make for every scene):
+
+
+
+up
+down
+left
+right
+
+These are the default commands. It will move your current scene to that direction relative to the scene map that you have declared.
+
+
+
+local + {name of your local scene}
+
+This will take your scene to a local scene that you have specified.
+A local scene is a scene that is not present in scene map
+
+
+
+leave
+
+This will exit you from the local scene and bring you back to the previous scene from the scene map
+
+
+
+{name of a different area}
+
+This will change your area and change your scene to the default scene of the area that you have created
+
+
+
+callback + {index of the callback}
+This will invoke the callback that you set on the scene with the same index from the command
+
+
+
+
+

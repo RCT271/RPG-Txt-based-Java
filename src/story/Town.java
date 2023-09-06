@@ -1,20 +1,27 @@
 package story;
 
-import main.Game;
-
 public class Town extends Area{
 	
-	public Town() {
-		pos = new int[] {1, 1};
-		sceneMap = new Scene[2][4];
+	public Town(String name, Story story) {
+		super(name, story);
 		
-		Scene center = new Scene("Town Center");
+		// Initialize scene map size.
+		// And the initial position on that map
+		sceneMap = new Scene[2][4];
+		pos = new int[] {1, 1};
+		
+		Scene center = new Scene("town center");
 		center.mainText = "You are at the town center. What would you like to do?";
 		
-		Scene tavern = new Scene("Tavern Entrance");
+		Scene tavern = new Scene("tavern entrance");
 		tavern.mainText = "You are in front of a tavern. What Would wou like to do?";
 		tavern.setCommand(0, "Tavern");
 		tavern.setText(0, "Go inside the tavern");
+		
+		Scene shop = new Scene("shop entrance");
+		shop.mainText = "You see a sign that says Ryan Bang's Shop";
+		shop.setCommand(2, "Shop");
+		shop.setText(2, "Go inside the shop");
 		
 		Scene questBoard = new Scene("Quest Board");
 		questBoard.mainText = "You see a quest board in front of you. What would you like to do?";
@@ -22,17 +29,11 @@ public class Town extends Area{
 		questBoard.setText(0, "Look at the quest board");
 		
 		Scene walkWay = new Scene("");
-		walkWay.mainText = "You are still in town...";
+		walkWay.mainText = "You are wandering the town...";
 		
 		sceneMap[1][1] = center;
+		sceneMap[1][0] = shop;
 		sceneMap[0][1] = tavern;
 		sceneMap[0][2] = questBoard;
-		for (int r = 0; r < sceneMap.length; r++) {
-			for (int c = 0; c < sceneMap[0].length; c++) {
-				if (sceneMap[r][c] == null) {
-					sceneMap[r][c] = walkWay;
-				}
-			}
-		}
 	}
 }

@@ -16,6 +16,10 @@ public class Game {
 	public static TitlePanel titlePanel;
 	public static ChoiceHandler choiceHandler;
 	
+	public static int selectorPos = -1;
+	
+	static Story mainStory;
+	
 	public static void main(String[] args) {
 		new Game();
 	}
@@ -33,8 +37,9 @@ public class Game {
 		window.setVisible(true);
 		window.addComponentListener(new WindowSizeHandler());
 
-		// handler
+		// handlers
 		choiceHandler = new ChoiceHandler();
+		window.addKeyListener(new KeyboardHandler());
 		
 		// panels
 		titlePanel = new TitlePanel();
@@ -43,7 +48,8 @@ public class Game {
 		window.add(titlePanel);
 		window.add(mainPanel);
 		
-		Story.initialize();
+		// start the story
+		mainStory = new Story();
 	}
 	
 	
@@ -81,23 +87,118 @@ public class Game {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new Sound("src/Assets/Click Fortuna.wav", -18f).play();
+			new Sound("src/Assets/Click Fortuna.wav").play();
 			
+			// title panel
+			if (e.getActionCommand().equals("Start")) {
+				titlePanel.setVisible(false);
+				mainPanel.setVisible(true);
+			}
 			
-			for (FortunaButton b : mainPanel.buttons) {
+			// main panel
+			for (int i = 0; i < mainPanel.buttons.length; i++) {
+				FortunaButton b = mainPanel.buttons[i];
+				
 				if (e.getSource() == b) {
-					Story.changeScene(b.getActionCommand());
+					Game.Callback callback = mainStory.currentArea.currentScene.callbacks[i]; 					
+					
+					if (callback != null) {
+						callback.call();
+					}
+					
+					mainStory.doCommand(b.getActionCommand());
+					break;
 				}
 			}
 			
 			
-			switch (e.getActionCommand()) {
-				case "Start":
-					titlePanel.setVisible(false);
-					mainPanel.setVisible(true);
-					break;
-			}
+		}
+	}
+	
+	
+	
+	class KeyboardHandler implements KeyListener {
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
 			
 		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// if the main panel is not yet visible
+			if (!mainPanel.isVisible()) return;
+			
+			boolean changed = false;
+			
+			switch (e.getKeyCode()) {
+				case KeyEvent.VK_UP:
+					selectorPos -= 1;
+					if (selectorPos < 0) {
+						selectorPos = 4;
+					}
+					// prevent selecting the disabled buttons
+					while (!mainPanel.buttons[selectorPos].isEnabled()) {
+						selectorPos -= 1;
+						if (selectorPos < 0) {
+							selectorPos = 4;
+						}
+					}
+					changed = true;
+					break;
+					
+					
+				case KeyEvent.VK_DOWN:
+					selectorPos += 1;
+					if (selectorPos >= 5) {
+						selectorPos = 0;
+					}
+					// prevent selecting the disabled buttons
+					while (!mainPanel.buttons[selectorPos].isEnabled()) {
+						selectorPos += 1;
+						if (selectorPos >= 5) {
+							selectorPos = 0;
+						}
+					}
+					changed = true;
+					break;
+					
+				
+				case KeyEvent.VK_ENTER:
+					if (selectorPos < 0) return;
+					mainPanel.buttons[selectorPos].doClick(60);
+					mainPanel.buttons[selectorPos].setBorder(FortunaButton.defaultBorder);
+					selectorPos = -1;
+					new Sound("src/Assets/Click Fortuna.wav", 6f).play();
+					break;
+					
+			}
+			
+			if (!changed) return;
+			
+			// reset all the button's border
+			for (JButton b : mainPanel.buttons) {
+				b.setBorder(FortunaButton.defaultBorder);
+			}			
+			
+			// then update the border of the selected button
+			mainPanel.buttons[selectorPos].setBorder(BorderFactory.createLineBorder(Color.white, 3));
+		
+			// play hover sound
+			new Sound("src/Assets/Hover Fortuna.wav", 6f).play();
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	
+	public interface Callback {
+		void call();
 	}
 }
