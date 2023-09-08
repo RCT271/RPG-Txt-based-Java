@@ -18,7 +18,7 @@ public class Game {
 	
 	public static int selectorPos = -1;
 	
-	static Story mainStory;
+	public static Story mainStory;
 	
 	public static void main(String[] args) {
 		new Game();

@@ -47,7 +47,6 @@ public class Tavern extends Area{
 			System.out.println("I am doing something");
 		});
 		
-		
 		// place the scenes accordingly
 		sceneMap[1][1] = doorEntrance;
 		sceneMap[0][1] = bar;

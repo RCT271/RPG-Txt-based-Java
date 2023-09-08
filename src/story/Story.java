@@ -41,14 +41,12 @@ public class Story {
 				currentArea.pos[1] += 1; break;
 			case "back":
 				currentArea = prevArea;
-//				setScene(currentArea.getSceneFromMap(currentArea.pos));
-//				return;
 				break;
 			case "leave":
-//				setScene(currentArea.getSceneFromMap(currentArea.pos));
-//				return;
 				break;
 			case "callback":
+				return;
+			case "save":
 				return;
 			default:
 				changeArea(actionCommand);
@@ -94,11 +92,11 @@ public class Story {
 			Game.mainPanel.buttons[i].setEnabled(true);
 		}
 		
-		// disable the button if it's scene doesn't have a command
+		// disable the button if its scene doesn't have a command
 		for (int i = 0; i < 5; i++) {
 			if (scene.commands[i].equals("")) {
 				Game.mainPanel.buttons[i].setEnabled(false);
-				scene.texts[i] = "";
+//				scene.texts[i] = "";
 			}
 		}		
 		
@@ -127,7 +125,7 @@ public class Story {
 			// if there is no future scene (i.e., there is no scene on that adjusted pos on the sceneMap)
 			if (futureScene == null) {
 				Game.mainPanel.buttons[i].setEnabled(false);
-				scene.texts[i] = "";
+//				scene.texts[i] = "";
 			}
 			else {
 				// only adjust the scene's text if it's the default text.
@@ -138,7 +136,7 @@ public class Story {
 			}
 		}
 		
-		// update the buttons' adjust texts
+		// update the buttons' adjusted texts
 		for (int i = 0; i < 5; i++) {
 			Game.mainPanel.buttons[i].setText(scene.texts[i]);
 		}
