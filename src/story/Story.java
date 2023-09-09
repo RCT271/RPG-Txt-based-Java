@@ -2,21 +2,30 @@ package story;
 
 import main.Game;
 import main.Game.Callback;
+import objects.*;
+import story.areas.*;
+
 
 public class Story {
 	
 	public Area[] areas = new Area[0];
 	
 	public Area currentArea, prevArea;
-	public Area town;
 	
+	public Player player;
 	
 	public Story() {
-//		town = new Town("Town", this);
-//		currentArea = town;
+		player = new Player();
 		
+		// initialize areas
+			// Areas found in town
 		currentArea = new Town("Town", this);
 		new Tavern("Tavern", this);
+		new Quest("Quest Board", this);
+		
+			// Areas found in the wilderness
+		new Forest("Forest", this);
+		
 		
 		setScene(currentArea.sceneMap[currentArea.pos[0]][currentArea.pos[1]]);
 	}
@@ -80,6 +89,15 @@ public class Story {
 		
 		// update panel's main text
 		Game.mainPanel.mainText.setText(scene.mainText);
+		
+		// update the subtext if there is any
+		if (!scene.mainText.equals("")) {
+			Game.mainPanel.subText.setVisible(true);
+			Game.mainPanel.subText.setText(scene.subText);
+		}
+		else {
+			Game.mainPanel.subText.setVisible(false);
+		}
 		
 		// update buttons' action command
 		for (int i = 0; i < 5; i++) {

@@ -22,9 +22,10 @@ public class Scene {
 //	;
 	
 	public final String[] defaultTexts = {"Go north", "Go south", "Go left", "Go right", "Go back"};
+	public final String[] defaultCommands = {"up", "down", "left", "right", ""};
 	
-	public String mainText = "";
-	public String[] commands = {"up", "down", "left", "right", ""};
+	public String mainText = "", subText = "";
+	public String[] commands = defaultCommands.clone();
 	public String[] texts = defaultTexts.clone();
 	public Callback[] callbacks = new Callback[5];
 	
@@ -56,9 +57,11 @@ public class Scene {
 	}
 	
 	public void resetTexts() {
-		for (int i = 0; i < texts.length; i++) {
-			resetText(i);
-		}
+		texts = defaultTexts.clone();
+	}
+	
+	public void resetCommands() {
+		commands = defaultCommands.clone();
 	}
 	
 	public void clearCommands() {

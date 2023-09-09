@@ -13,6 +13,7 @@ public abstract class GUI {
 	public static Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
 	public static Font normalFont = new Font("Times New Roman", Font.PLAIN, 15);
 	public static Font textFont = new Font("Times New Roman", Font.PLAIN, 20);
+	public static Font subTextFont = new Font("Times New Roman", Font.PLAIN, 18);
 	
 	// pre defined classes
 	@SuppressWarnings("serial")

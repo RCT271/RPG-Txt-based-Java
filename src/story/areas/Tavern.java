@@ -1,4 +1,9 @@
-package story;
+package story.areas;
+
+import story.Area;
+import story.LocalScene;
+import story.Scene;
+import story.Story;
 
 public class Tavern extends Area{
 
@@ -44,7 +49,6 @@ public class Tavern extends Area{
 			tavernKeep.mainText = "Tavernkeep: Heya there, mate! Whan can I do fer ya??";
 			tavernKeep.setText(0, "Buy meat");
 			tavernKeep.setText(1, "Buy beer");
-			System.out.println("I am doing something");
 		});
 		
 		// place the scenes accordingly

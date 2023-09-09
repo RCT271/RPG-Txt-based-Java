@@ -4,9 +4,9 @@ public abstract class Area {
 	
 	public int pos[] = {0, 0};
 	
-	LocalScene[] localScenes = new LocalScene[0];
-	Scene[][] sceneMap;
-	String name;
+	public LocalScene[] localScenes = new LocalScene[0];
+	public Scene[][] sceneMap;
+	public String name;
 	
 	public Scene currentScene;
 	

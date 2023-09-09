@@ -30,7 +30,7 @@ This will change your area and change your scene to the default scene of the are
 
 
 
-callback + {index of the callback}
+callback
 This will invoke the callback that you set on the scene with the same index from the command
 
 

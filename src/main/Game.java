@@ -11,14 +11,19 @@ import story.Story;
 
 public class Game {
 
+	// GUI thingies
 	public static JFrame window = new JFrame("Fortuna");
 	public static MainPanel mainPanel;
 	public static TitlePanel titlePanel;
 	public static ChoiceHandler choiceHandler;
 	
-	public static int selectorPos = -1;
-	
 	public static Story mainStory;
+	
+	
+	// selsector thingies
+	public static int selectorPos = -1;
+	private double pressEnterLT = System.currentTimeMillis(); // last time since enter key was pressed
+	private boolean canEnter = true;
 	
 	public static void main(String[] args) {
 		new Game();
@@ -100,13 +105,16 @@ public class Game {
 				FortunaButton b = mainPanel.buttons[i];
 				
 				if (e.getSource() == b) {
+					
 					Game.Callback callback = mainStory.currentArea.currentScene.callbacks[i]; 					
 					
 					if (callback != null) {
 						callback.call();
 					}
-					
+
 					mainStory.doCommand(b.getActionCommand());
+					
+					
 					break;
 				}
 			}
@@ -166,13 +174,11 @@ public class Game {
 					
 				
 				case KeyEvent.VK_ENTER:
-					if (selectorPos < 0) return;
+					if (!canEnter || selectorPos < 0) return;
 					mainPanel.buttons[selectorPos].doClick(60);
-					mainPanel.buttons[selectorPos].setBorder(FortunaButton.defaultBorder);
-					selectorPos = -1;
+					canEnter = false;
 					new Sound("src/Assets/Click Fortuna.wav", 6f).play();
 					break;
-					
 			}
 			
 			if (!changed) return;
@@ -191,8 +197,9 @@ public class Game {
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				canEnter = true;
+			}
 		}
 		
 	}
