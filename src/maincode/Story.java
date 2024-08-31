@@ -16,6 +16,8 @@ public class Story {
 	public Story(Game g, UI UserInterface, Transition Trans) {
 		player.PlayerHP = 100;
 		player.Money = 50;
+		player.PlayerLVL = 1;
+		player.PlayerEXP = 0;
 		player.CurrentWeapon = new Weapon_Warhammer();
 		
 		File file = new File("src/Assets/saveload.sav");
@@ -32,7 +34,10 @@ public class Story {
 		ui.hpLabelNumber.setText(""	+ player.PlayerHP);
 		ui.goldLabelNumber.setText("" + player.Money);
 		ui.WeaponLabelName.setText(player.CurrentWeapon.Weapon_name);
+		ui.LevelLabelNumber.setText("" + player.PlayerLVL);
+		ui.EXPLabelNumber.setText("" + player.PlayerEXP);
 	}
+
 	public void selectPosition(String nextPosition) {
 		defaultSetup();
 		switch(nextPosition) {
@@ -99,17 +104,17 @@ public class Story {
 	}
 	
 	public void Questboard() {
-		ui.mainTextArea.setText("This Area is still not done.");
+		ui.mainTextArea.setText("Pick A Quest");
 		ui.BChoice1.setText("Go Back");
-		ui.BChoice2.setText("");
-		ui.BChoice3.setText("");
-		ui.BChoice4.setText("");
+		ui.BChoice2.setText("Aspirant");
+		ui.BChoice3.setText("Low Rank");
+		ui.BChoice4.setText("High Rank");
 		ui.BChoice5.setText("Save");
 		
 		game.nextPosition1 = "Town";
-		game.nextPosition2 = "";
-		game.nextPosition3 = "";
-		game.nextPosition4 = "";
+		game.nextPosition2 = "Introductions";
+		game.nextPosition3 = "Low Rank";
+		game.nextPosition4 = "High Rank";
 		game.nextPosition5 = "Save";
 		
 	}
@@ -213,7 +218,7 @@ public class Story {
 		ui.BChoice3.setText("");
 		ui.BChoice4.setText("");
 		
-		game.nextPosition1 = "Fight";
+		game.nextPosition1 = "FightForest";
 		game.nextPosition2 = "Forest";
 		game.nextPosition3 = "";
 		game.nextPosition4 = "";
@@ -351,9 +356,10 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		Game.bgMusic.stop();
 		Game.bgMusic = new Sound("src/Assets/Fortuna Victory.wav");
 		Game.bgMusic.loop();
-		ui.mainTextArea.setText("You are Victorious, You Defeated the " + monster.name + " You also gained some money");
+		ui.mainTextArea.setText("You are Victorious, You Defeated the " + monster.name + " You also gained some money and experience");
 		
 		player.Money += 50;
+		player.PlayerEXP += 400;
 		ui.BChoice1.setText("Stay and Fight More");
 		ui.BChoice2.setText("Go back to the Town");
 		ui.BChoice3.setText("Camp for a while");
@@ -365,6 +371,11 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		game.nextPosition3 = "Camp";
 		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
+
+		if(player.PlayerEXP == 1000){
+			player.PlayerLVL += 1;
+			ui.mainTextArea.setText("Congratulations, you leveled up");
+		}
 	}
 	public void Lost() {
 		Game.bgMusic.stop();
@@ -539,9 +550,10 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		Game.bgMusic.stop();
 		Game.bgMusic = new Sound("src/Assets/Fortuna Victory.wav");
 		Game.bgMusic.loop();
-		ui.mainTextArea.setText("You are Victorious, You Defeated the " + monster.name + " You also gained some money");
+		ui.mainTextArea.setText("You are Victorious, You Defeated the " + monster.name + " You also gained some money and experience");
 		
-		player.Money += 50;
+		player.Money += 150;
+		player.PlayerEXP += 250;
 		ui.BChoice1.setText("Stay and Fight More");
 		ui.BChoice2.setText("Go back to the Forest");
 		ui.BChoice3.setText("Camp for a while");
@@ -553,6 +565,11 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 		game.nextPosition3 = "CampCavern";
 		game.nextPosition4 = "";
 		game.nextPosition5 = "Save";
+		
+		if(player.PlayerEXP == 1000){
+			player.PlayerLVL += 1;
+			ui.mainTextArea.setText("Congratulations, you leveled up");
+		}
 	}
 
 }

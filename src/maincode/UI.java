@@ -7,7 +7,7 @@ import maincode.Game.ChoiceHandler;
 public class UI {
 	JFrame window;
 	JPanel TitlenamePanel, StartButtonPanel, mainTextPanel, ButtonPanel, UserPanel;
-	JLabel TitlenameLabel, hpLabel, hpLabelNumber, WeaponLabel, WeaponLabelName, goldLabelNumber, goldLabel;
+	JLabel TitlenameLabel, hpLabel, hpLabelNumber, WeaponLabel, WeaponLabelName, goldLabelNumber, goldLabel, EXPLabel, EXPLabelNumber, LevelLabel, LevelLabelNumber;
 	JButton StartButton, BChoice1, BChoice2, BChoice3, BChoice4, BChoice5;
 	JTextArea mainTextArea;
 	
@@ -123,7 +123,7 @@ public class UI {
 		UserPanel.setLayout(new GridLayout(2,5));
 		UserPanel.setBounds(100, 15, 550, 50);
 		UserPanel.setBackground(Color.black);
-		UserPanel.setLayout(new GridLayout(4,2));
+		UserPanel.setLayout(new GridLayout(5,2));
 		window.add(UserPanel);
 
 		
@@ -142,7 +142,6 @@ public class UI {
 		hpLabel.setForeground(Color.white);
 		UserPanel.add(hpLabel);
 		hpLabelNumber = new JLabel();
-		
 		hpLabelNumber.setFont(normalFont);
 		hpLabelNumber.setForeground(Color.white);
 		UserPanel.add(hpLabelNumber);
@@ -156,7 +155,26 @@ public class UI {
 		WeaponLabelName.setForeground(Color.white);
 		UserPanel.add(WeaponLabelName);
 		
-		
+		LevelLabel = new JLabel("LEVEL:");
+		LevelLabel.setFont(normalFont);
+		LevelLabel.setForeground(Color.white);
+		UserPanel.add(LevelLabel);
+
+		LevelLabelNumber = new JLabel();
+		LevelLabelNumber.setFont(normalFont);
+		LevelLabelNumber.setForeground(Color.white);
+		UserPanel.add(LevelLabelNumber);
+
+		EXPLabel = new JLabel("EXP:");
+		EXPLabel.setFont(normalFont);
+		EXPLabel.setForeground(Color.white);
+		UserPanel.add(EXPLabel);
+
+		EXPLabelNumber = new JLabel();
+		EXPLabelNumber.setFont(normalFont);
+		EXPLabelNumber.setForeground(Color.white);
+		UserPanel.add(EXPLabelNumber);
+
 		window.setVisible(true);
 		
 
