@@ -9,4 +9,6 @@ public class DataStorage implements Serializable{
 	public int PlayerHP;
 	public int PlayerMoney;
 	public String PlayerWeapon;
+	public int PlayerEXP;
+	public int PlayerLVL;
 }
