@@ -5,7 +5,7 @@ public class MonsterCavern_Orc extends Super_Monster{
 		name = "Orc";
 		hp = 20;
 		dmg = 6;
-		AttackMSG = "Orc Swinged his Club at You";
+		AttackMSG = "Orc Swung his Club at You";
 		
 	}
 

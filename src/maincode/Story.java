@@ -402,6 +402,14 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 			game.nextPosition3 = "";
 			game.nextPosition4 = "";
 		}
+
+		if(playerDMG > monster.hp){
+			ui.mainTextArea.setText("You hit a critical attack on the " + monster.name + " For " + playerDMG + " DMG");
+			game.nextPosition1 = "WinForest";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
 	}
 	
 	public void MonsterAttackForest() {
@@ -423,6 +431,13 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 			game.nextPosition4 = "";
 		}
 		else if(player.PlayerHP<1) {
+			game.nextPosition1 = "Lost";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
+		if(monsterDamage > player.PlayerHP){
+			ui.mainTextArea.setText("The " + monster.name + " Hit a Critical Attack on You for " + monsterDamage + " DMG");
 			game.nextPosition1 = "Lost";
 			game.nextPosition2 = "";
 			game.nextPosition3 = "";
@@ -668,6 +683,13 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 				game.nextPosition3 = "";
 				game.nextPosition4 = "";
 			}
+			if(playerDMG > monster.hp){
+				ui.mainTextArea.setText("You hit a critical attack on the " + monster.name + " For " + playerDMG + " DMG");
+				game.nextPosition1 = "WinCaverns";
+				game.nextPosition2 = "";
+				game.nextPosition3 = "";
+				game.nextPosition4 = "";
+			}
 		}
 
 		public void MonsterAttackCavern() {
@@ -694,7 +716,13 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 				game.nextPosition3 = "";
 				game.nextPosition4 = "";
 			}
-			
+			if(monsterDamage > player.PlayerHP){
+				ui.mainTextArea.setText("The " + monster.name + " Hit a Critical Attack on You for " + monsterDamage + " DMG");
+				game.nextPosition1 = "Lost";
+				game.nextPosition2 = "";
+				game.nextPosition3 = "";
+				game.nextPosition4 = "";
+			}
 		}	
 	
 	public void WinCaverns() {
@@ -816,7 +844,14 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 				game.nextPosition3 = "";
 				game.nextPosition4 = "";
 			}
+		if(playerDMG > monster.hp){
+			ui.mainTextArea.setText("You hit a critical attack on the " + monster.name + " For " + playerDMG + " DMG");
+			game.nextPosition1 = "WinDesert";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
 		}
+	}
 		public void MonsterAttackDesert() {
 			new Sound("src/Assets/Attack SFX.wav").play();
 			int monsterDamage = new java.util.Random().nextInt(monster.dmg);
@@ -836,6 +871,13 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 				game.nextPosition4 = "";
 			}
 			else if(player.PlayerHP<1) {
+				game.nextPosition1 = "Lost";
+				game.nextPosition2 = "";
+				game.nextPosition3 = "";
+				game.nextPosition4 = "";
+			}
+			if(monsterDamage > player.PlayerHP){
+				ui.mainTextArea.setText("The " + monster.name + " Hit a Critical Attack on You for " + monsterDamage + " DMG");
 				game.nextPosition1 = "Lost";
 				game.nextPosition2 = "";
 				game.nextPosition3 = "";
@@ -968,6 +1010,13 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 			game.nextPosition3 = "";
 			game.nextPosition4 = "";
 		}
+		if(playerDMG > monster.hp){
+			ui.mainTextArea.setText("You hit a critical attack on the " + monster.name + " For " + playerDMG + " DMG");
+			game.nextPosition1 = "WinMountain";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
 	}
 	public void MonsterAttackMountain() {
 		new Sound("src/Assets/Attack SFX.wav").play();
@@ -988,6 +1037,13 @@ ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n\nWhat do You Do?"
 			game.nextPosition4 = "";
 		}
 		else if(player.PlayerHP<1) {
+			game.nextPosition1 = "Lost";
+			game.nextPosition2 = "";
+			game.nextPosition3 = "";
+			game.nextPosition4 = "";
+		}
+		if(monsterDamage > player.PlayerHP){
+			ui.mainTextArea.setText("The " + monster.name + " Hit a Critical Attack on You for " + monsterDamage + " DMG");
 			game.nextPosition1 = "Lost";
 			game.nextPosition2 = "";
 			game.nextPosition3 = "";
