@@ -1,7 +1,5 @@
 package maincode;
-
 import java.awt.*;
-
 import javax.swing.*;
 import maincode.Game.ChoiceHandler;
 public class UI {
@@ -26,7 +24,6 @@ public class UI {
 		window.getContentPane().setBackground(Color.black);
 		window.setLayout(null);
 
-		
 		//Title
 		TitlenamePanel = new JPanel();
 		TitlenamePanel.setBounds(100, 100, 600, 150);
@@ -52,7 +49,6 @@ public class UI {
 		TitlenamePanel.setVisible(false);
 		window.add(StartButtonPanel);
 		StartButtonPanel.setVisible(false);
-		
 		
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(100, 100, 600, 250);
@@ -177,6 +173,5 @@ public class UI {
 
 		window.setVisible(true);
 		
-
 	}
 }	

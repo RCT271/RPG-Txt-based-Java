@@ -1,9 +1,6 @@
 package maincode;
-
 import java.io.File;
-
 import Assets.*;
-
 public class Story {
 	
 	Game game;
@@ -62,6 +59,13 @@ public class Story {
 		case "WinForest": WinForest(); break;
 
 		case "Lost": Lost(); break;
+		case "MoreTown": MoreTown(); break;
+		case "MoreForest": MoreForest(); break;
+		case "MoreCave": MoreCave(); break;
+		case "MoreCaverns": MoreCaverns(); break;
+		case "MoreDesert": MoreDesert(); break;
+		case "MoreMountain": MoreMountain(); break;
+
 		case "Save": Save(); break;
 
 		case "Cave": Cave(); break;
@@ -101,13 +105,13 @@ public class Story {
 		ui.BChoice2.setText("Go To the Forest");
 		ui.BChoice3.setText("Go To the Tavern");
 		ui.BChoice4.setText("Go To the Shop");
-		ui.BChoice5.setText("Save");
+		ui.BChoice5.setText("More");
 		
 		game.nextPosition1 = "Questboard";
 		game.nextPosition2 = "Forest";
 		game.nextPosition3 = "Tavern";
 		game.nextPosition4 = "Shop";
-		game.nextPosition5 = "Save";
+		game.nextPosition5 = "MoreTown";
 	}
 
 	//Shop//
@@ -117,13 +121,13 @@ public void Shop() {
 	ui.BChoice2.setText("Buy Items");
 	ui.BChoice3.setText("");
 	ui.BChoice4.setText("");
-	ui.BChoice5.setText("Save");
+	ui.BChoice5.setText("More");
 	
 	game.nextPosition1 = "Town";
 	game.nextPosition2 = "";
 	game.nextPosition3 = "";
 	game.nextPosition4 = "";
-	game.nextPosition5 = "Save";
+	game.nextPosition5 = "MoreShop";
 }
 
 	public void Questboard() {
@@ -132,13 +136,13 @@ public void Shop() {
 		ui.BChoice2.setText("Aspirant");
 		ui.BChoice3.setText("Low Rank");
 		ui.BChoice4.setText("High Rank");
-		ui.BChoice5.setText("Save");
+		ui.BChoice5.setText("More");
 		
 		game.nextPosition1 = "Town";
 		game.nextPosition2 = "Introductions";
 		game.nextPosition3 = "Low Rank";
 		game.nextPosition4 = "High Rank";
-		game.nextPosition5 = "Save";
+		game.nextPosition5 = "MoreQuests";
 		
 	}
 
@@ -157,7 +161,98 @@ public void Shop() {
 		player.PlayerHP = data.PlayerHP;
 		player.Money = data.PlayerMoney;
 	}
-	
+
+		public void MoreTown(){
+		ui.mainTextArea.setText("");
+		ui.BChoice1.setText("Save");
+		ui.BChoice2.setText("Inventory");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Back");
+
+		game.nextPosition1 = "Save";
+		game.nextPosition2 = "InventoryTown";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Town";
+
+	}
+
+	public void MoreForest(){
+		ui.mainTextArea.setText("");
+		ui.BChoice1.setText("Save");
+		ui.BChoice2.setText("Inventory");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Back");
+
+		game.nextPosition1 = "Save";
+		game.nextPosition2 = "InventoryForest";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Forest";
+	}
+
+	public void MoreCave(){
+		ui.mainTextArea.setText("");
+		ui.BChoice1.setText("Save");
+		ui.BChoice2.setText("Inventory");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Back");
+
+		game.nextPosition1 = "Save";
+		game.nextPosition2 = "InventoryCave";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Cave";
+	}
+
+	public void MoreCaverns(){
+		ui.mainTextArea.setText("");
+		ui.BChoice1.setText("Save");
+		ui.BChoice2.setText("Inventory");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Back");
+
+		game.nextPosition1 = "Save";
+		game.nextPosition2 = "InventoryCaverns";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Caverns";
+	}
+
+	public void MoreDesert(){
+		ui.mainTextArea.setText("");
+		ui.BChoice1.setText("Save");
+		ui.BChoice2.setText("Inventory");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Back");
+
+		game.nextPosition1 = "Save";
+		game.nextPosition2 = "InventoryDesert";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Desert";
+	}
+
+	public void MoreMountain(){
+		ui.mainTextArea.setText("");
+		ui.BChoice1.setText("Save");
+		ui.BChoice2.setText("Inventory");
+		ui.BChoice3.setText("");
+		ui.BChoice4.setText("");
+		ui.BChoice5.setText("Back");
+
+		game.nextPosition1 = "Save";
+		game.nextPosition2 = "InventoryMountain";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+		game.nextPosition5 = "Mountain";
+	}
+
 	//Forest//
 	public void Forest() {
 		Game.bgMusic.stop();
